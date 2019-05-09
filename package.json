@@ -1,0 +1,36 @@
+{
+  "name": "bv-git-repo-cli",
+  "version": "0.0.1",
+  "description": "git dowload",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "bin": {
+    "bv-git-repo": "bin/bv-git-repo",
+    "bv-git-repo-init": "bin/bv-git-repo-init",
+    "bv-git-repo-run": "bin/bv-git-repo-run"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvjs/bv-git-repo-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bvjs/bv-git-repo-cli/issues"
+  },
+  "homepage": "https://github.com/bvjs/bv-git-repo-cli#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "fs": "^0.0.1-security",
+    "nodegit": "^0.24.3",
+    "ora": "^3.4.0",
+    "path": "^0.12.7",
+    "util": "^0.12.0"
+  }
+}

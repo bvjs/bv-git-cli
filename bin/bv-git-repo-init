@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+/**
+ * key: 
+ */
+const fs = require('fs')
+const logger = require('../lib/logger')
+const configName = require('../lib/config').configName
+const configContent = `module.exports = {
+	output: '',
+  repos: {
+    // repository: repository clone url
+  },
+}`
+
+if (fs.existsSync(configName)) {
+  logger.error(configName + ' exists')
+}
+
+fs.writeFile(configName, configContent, { 'flag': 'a' }, function(err) {
+  if (err) {
+    logger.error(err)
+  }
+  logger.success(`create ${configName} success`)
+})

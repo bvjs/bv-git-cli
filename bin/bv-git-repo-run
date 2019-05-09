@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+/**
+ * 下载
+ */
+const download = require('../lib/download')
+const path = require("path")
+const ora = require('ora')
+const chalk = require('chalk')
+const logger = require('../lib/logger')
+const fs = require('fs')
+const configName = require('../lib/config').configName
+
+if (!fs.existsSync(configName)) {
+  console.log()
+  console.log(chalk.gray('    # Run '))
+  console.log('    $ bv-git-repo init')
+  console.log()
+  logger.error(`Not found ${configName}`)
+}
+const cfg = require(path.resolve(configName))
+const repos = Object.entries(cfg.repos)
+if (!repos.length) {
+  logger.log(`Download nothing`)
+  process.exit(1)
+}
+const spinner = new ora('Downloading...')
+spinner.start()
+Promise
+  .all(
+    repos.map(([repoDir, gitUrl]) => download(gitUrl, path.resolve(cfg.output, repoDir)))
+  ).then(()=>{
+    spinner.succeed('Download success')
+  }).catch(err=> {
+    spinner.fail(chalk.red(err))
+  })
