@@ -22,15 +22,19 @@ const cfg = require(path.resolve(configName))
 const repos = Object.entries(cfg.repos)
 if (!repos.length) {
   logger.log(`Download nothing`)
-  process.exit(1)
+} else {
+  Main()
 }
-const spinner = new ora('Downloading...')
-spinner.start()
-Promise
-  .all(
-    repos.map(([repoDir, gitUrl]) => download(gitUrl, path.resolve(cfg.output, repoDir)))
-  ).then(()=>{
-    spinner.succeed('Download success')
-  }).catch(err=> {
-    spinner.fail(chalk.red(err))
-  })
+
+function Main(){
+  const spinner = new ora('Downloading...')
+  spinner.start()
+  Promise
+    .all(
+      repos.map(([repoDir, gitUrl]) => download(gitUrl, path.resolve(cfg.output, repoDir)))
+    ).then(()=>{
+      spinner.succeed('Download success')
+    }).catch(err=> {
+      spinner.fail(chalk.red(err))
+    })
+}
