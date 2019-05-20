@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * 下载
+ * git clone
  */
 
 const path = require("path")
@@ -19,12 +19,14 @@ const configPath = path.resolve(program.args[0] || configName)
 
 if (!fs.existsSync(configPath)) {
   logger.error(`Not found ${configPath}, #run $ bv-git init`)
+  process.exit(1)
 }
 
 const { repos, output, info = false, clean = false } = require(configPath)
 
 if (!repos.length) {
   logger.error(`No such project, check 'repos' attribute`)
+  process.exit(1)
 }
 
 const reposLen = repos.length
@@ -36,11 +38,12 @@ const spinner = ora('').start()
 const _clone = (index = 0) => {
 
   if (index >= reposLen) {
-    console.clear()
     if (info) {
+      console.log('')
       console.table(repos)
     }
-    return spinner.succeed(`git clone : ${(cloned * 100 / reposLen).toFixed(2)}% ${cloned} projects cloned, ${failed} projects failed`)
+    spinner.succeed(`git clone : ${(cloned * 100 / reposLen).toFixed(2)}% ${cloned} projects cloned, ${failed} projects failed`)
+    process.exit(1)
   }
 
   const repo = repos[index]
@@ -59,7 +62,8 @@ const _clone = (index = 0) => {
     })
     .catch(err => {
       ++failed
-      repo.error = true
+      repo.state = 'failed'
+      console.log('')
       logger.error(err)
     })
     .finally(() => {
