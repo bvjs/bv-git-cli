@@ -1,23 +1,18 @@
 #!/usr/bin/env node
 
 /**
- * key: 
+ * 复制配置模板到当前目录
  */
 const fs = require('fs')
+const path = require('path')
 const logger = require('../lib/logger')
 const configName = require('../lib/config').configName
-const configContent = `module.exports = {
-	output: '',
-  repos: {
-    // repository: repository clone url
-  },
-}`
 
 if (fs.existsSync(configName)) {
   logger.error(configName + ' exists')
 }
 
-fs.writeFile(configName, configContent, { 'flag': 'a' }, function(err) {
+fs.copyFile(path.resolve(__dirname, '../templates/git.config.js'), configName, err => {
   if (err) {
     logger.error(err)
   }

@@ -1,6 +1,6 @@
 {
   "name": "bv-git-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "git dowload",
   "main": "index.js",
   "directories": {
@@ -9,7 +9,7 @@
   "bin": {
     "bv-git": "bin/bv-git",
     "bv-git-init": "bin/bv-git-init",
-    "bv-git-run": "bin/bv-git-clone"
+    "bv-git-clone": "bin/bv-git-clone"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,6 +31,7 @@
     "nodegit": "^0.24.3",
     "ora": "^3.4.0",
     "path": "^0.12.7",
+    "rimraf": "^2.6.3",
     "util": "^0.12.0"
   }
 }

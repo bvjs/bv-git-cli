@@ -7,5 +7,5 @@ program
   .version(packageConfig.version)
   .usage('<command> [options]')
   .command('init', 'create new config')
-  .command('run', 'start downloading')
+  .command('clone [config]', 'clone project by config')
   .parse(process.argv)
