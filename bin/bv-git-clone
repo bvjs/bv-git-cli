@@ -42,8 +42,7 @@ const _clone = (index = 0) => {
       console.log('')
       console.table(repos)
     }
-    spinner.succeed(`git clone : ${(cloned * 100 / reposLen).toFixed(2)}% ${cloned} projects cloned, ${failed} projects failed`)
-    process.exit(1)
+    return spinner.succeed(`git clone : ${(cloned * 100 / reposLen).toFixed(2)}% ${cloned} projects cloned, ${failed} projects failed`)
   }
 
   const repo = repos[index]
