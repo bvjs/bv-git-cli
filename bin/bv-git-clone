@@ -49,7 +49,7 @@ const _clone = (index = 0) => {
   const { url, branch } = repo
   const repoDir = path.basename(url).replace(/\.git/, '')
   const repoOutput = path.resolve(output, repoDir)
-  spinner.text = `[${index + 1}/${reposLen}] ${url}`
+  spinner.text = `[${index + 1}/${reposLen}] git clone ${url}`
 
   if (clean) {
     rimraf(repoOutput, {}, logger.error)
