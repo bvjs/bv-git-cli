@@ -7,9 +7,9 @@
     - npm
 install:
   - npm install
-before_script:
-  - npm link
 script:
+  - npm link
+after_script:
   - bv-git
   - bv-git init
-  - bv-git clone  
+  - bv-git clone
