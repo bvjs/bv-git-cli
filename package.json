@@ -3,6 +3,11 @@
   "version": "0.0.7",
   "description": "git dowload",
   "main": "index.js",
+  "keywords": [
+    "bv-git-cli",
+    "nodegit",
+    "bv-cil"
+  ],
   "directories": {
     "lib": "lib"
   },
