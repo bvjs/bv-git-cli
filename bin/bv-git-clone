@@ -19,14 +19,12 @@ const configPath = path.resolve(program.args[0] || configName)
 
 if (!fs.existsSync(configPath)) {
   logger.error(`Not found ${configPath}, #run $ bv-git init`)
-  process.exit(1)
 }
 
 const { repos, output, info = false, clean = false } = require(configPath)
 
 if (!repos.length) {
   logger.error(`No such project, check 'repos' attribute`)
-  process.exit(1)
 }
 
 const reposLen = repos.length

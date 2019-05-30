@@ -1,6 +1,6 @@
 {
   "name": "bv-git-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "git dowload",
   "main": "index.js",
   "keywords": [
@@ -23,7 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/bvjs/bv-git-cli.git"
   },
-  "author": "",
+  "author": "雨后黄昏 <shihuajunze@163.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bvjs/bv-git-cli/issues"

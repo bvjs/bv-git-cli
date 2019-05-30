@@ -10,13 +10,11 @@ const configName = require('../lib/config').configName
 
 if (fs.existsSync(configName)) {
   logger.error(configName + ' exists')
-  process.exit(1)
 }
 
 fs.copyFile(path.resolve(__dirname, '../templates/git.config.js'), configName, err => {
   if (err) {
     logger.error(err)
-    process.exit(1)
   }
   logger.success(`create ${configName} success`)
 })
